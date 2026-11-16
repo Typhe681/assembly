@@ -17,6 +17,39 @@ main:
   mov edi, 69 ; idfk
   syscall
 
+tick:
+  mov r10, 0 ; board counter
+  mov r12, 0 ; width counter
+  mov r13, 0 ; height counter
+  ; loop through cells
+    ; check neighbors
+    ; rules set flag
+  mov r10, 0 ; board counter
+  mov r12, 0 ; width counter
+  mov r13, 0 ; height counter
+  ; loop again
+    ; move flag into state
+  ret
+
+neighbors:
+  ; r10 board counter
+  ; r12 width counter
+  ; r13 height counter
+  mov r14, 0 ; neighbor counter
+  ; grab address, x, y for current cell
+  ; loop through neighbor offsets (exclude 0,0)
+    ; if offset not within board, skip
+    ; else inc counter if state 1
+  ret
+
+rules:
+  ; use [board + r10] for addr
+  ; r14 neighbor counter
+  ; if count two copy (not move) state to flag
+  ; if count three then flag = 1
+  ; else do nothing (flag already 0)
+  ret
+
 print:
   mov r10, 0 ; board counter
   mov r12, 0 ; width counter
