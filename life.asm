@@ -43,17 +43,17 @@ print_char:
   mov rdi, 1      ; print to screen
                   ; char set before calling
   mov rdx, 1      ; how many bytes
-  syscall         ; go
+  syscall
   ret
 
 section .data
 nl db 10 ; need data since rsi just address
 chars: db ".#"
 board: db "........"
-       db "...#...."
-       db "...#...."
-       db "...#...."
+       db "..#..#.."
+       db "..#..#.."
        db "........"
-       db ".....###"
+       db ".#....#."
+       db "..####.."
        db "........"
        db "........"
