@@ -43,11 +43,18 @@ neighbors:
   ret
 
 rules:
-  ; use [board + r10] for addr
-  ; r14 neighbor counter
-  ; if count two copy (not move) state to flag
-  ; if count three then flag = 1
-  ; else do nothing (flag already 0)
+  cmp r14, 2 ; 2 neighbor, no change
+  jne skip1
+  movzx rax, byte [board + r10] ; extract cell
+  and al, 1 ; only state bit
+  shl al, 1 ; move state to flag
+  or [board + r10], al ; put flag into cell
+  skip1:
+  cmp r14, 3; three neighbor, reproduce
+  jne skip2
+  or byte [board + r10], 2
+  skip2:
+  ; neighbors <2 or >3, cell dies (flag already zero)
   ret
 
 print:
