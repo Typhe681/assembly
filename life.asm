@@ -14,6 +14,11 @@ save:
   jnz save
 main:
   call print
+  mov rax, 0
+  mov rdi, 0
+  lea rsi, [rsp-8]  ; trash byte
+  mov rdx, 1
+  syscall
   call tick
   jmp main
 
